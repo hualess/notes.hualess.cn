@@ -1,4 +1,4 @@
-name: GitHub Actions Build and Deploy
+name: GitHub Actions Deploy
 
 # 触发条件: push 到 master 分支后
 on:
