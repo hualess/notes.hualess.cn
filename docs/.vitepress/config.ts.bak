@@ -1,13 +1,15 @@
-import {basename} from 'node:path'
-import {defineConfig} from 'vitepress'
+import {createWriteStream} from 'node:fs'
+import {resolve, basename} from 'node:path'
+import {SitemapStream} from 'sitemap'
+import {defineConfig, PageData} from 'vitepress'
 import MarkdownPreview from 'vite-plugin-markdown-preview'
-import {algolia, head, nav, sidebar} from './configs'
+import {head, nav, sidebar, algolia} from './configs'
 
 const APP_BASE_PATH = basename(process.env.GITHUB_REPOSITORY || '')
 
 export default defineConfig({
   outDir: '../dist',
-  base: '/',
+  base: APP_BASE_PATH ? `/${APP_BASE_PATH}/` : '/',
 
   lang: 'zh-CN',
   title: '驾狗师',
